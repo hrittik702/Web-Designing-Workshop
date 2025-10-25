@@ -1,0 +1,38 @@
+body {
+    transform: scale(1.75);
+    transform-origin: 0 0;
+    overflow: hidden;
+    width: calc(100% / 1.75);
+}   
+a{
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(94, 103, 146);
+}
+.top-bar-container{
+    display: flex;
+    /* padding-top: 13px; */
+    align-items: center;
+    /* padding-left: 10px; */
+    background-color: rgb(255, 255, 255);
+    background-image: url('images/Untitled\ design.png');
+    background-size: 950px;
+}
+
+.welcome-msg-container{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.navigation-links{
+    flex-grow : 1;
+    flex-shrink : 1;
+    font-size: xx-large;
+    text-align: center;
+    /* white-space: nowrap; */
+}
+.logo{
+    padding-left: 10px;
+}
