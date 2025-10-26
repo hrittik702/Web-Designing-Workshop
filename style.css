@@ -34,5 +34,45 @@ a{
     /* white-space: nowrap; */
 }
 .logo{
-    padding-left: 10px;
+    padding-left: 20px;
 }
+
+.book-menu-container{
+    font-family: sans-serif;
+    font-size: medium;
+}
+
+.description{
+    text-align: center;
+}
+
+.login-container{
+    justify-content: center;
+    /* /* align-items: center; */
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-top: 50px;
+}
+
+.input-group input::placeholder{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+    
+}
+
+.login{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: smaller;
+    padding-bottom: 25px;
+}
+
+.input-group[type="text"]:focus{
+    font-size: x-16px;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    outline:none;
+
+}
+
