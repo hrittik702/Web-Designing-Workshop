@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <form id="registration-form">
+            <h2>Registration Page</h2>
+
+            
+            <div class="grid-container">
+                
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                
+                <div class="input-group">
+                    <label for="email">E-mail ID:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                
+                <div class="input-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+            </div> 
+
+            
+            
+            <fieldset class="input-group horizontal-group">
+                <legend>Sex:</legend>
+                <div>
+                    <input type="radio" id="male" name="sex" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="sex" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div>
+                    <input type="radio" id="other" name="sex" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </fieldset>
+
+            
+            <fieldset class="input-group dob-group">
+                <legend>Date of Birth:</legend>
+                <select name="dob-day" id="dob-day" aria-label="Day">
+                    <option value="">Day</option>
+                </select>
+                <select name="dob-month" id="dob-month" aria-label="Month">
+                    <option value="">Month</option>
+                </select>
+                <select name="dob-year" id="dob-year" aria-label="Year">
+                    <option value="">Year</option>
+                </select>
+            </fieldset>
+
+            
+            
+            <fieldset class="input-group horizontal-group">
+                <legend>Languages Known:</legend>
+                <div>
+                    <input type="checkbox" id="lang-english" name="languages" value="english">
+                    <label for="lang-english">English</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang-telugu" name="languages" value="telugu">
+                    <label for="lang-telugu">Telugu</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang-hindi" name="languages" value="hindi">
+                    <label for="lang-hindi">Hindi</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang-tamil" name="languages" value="tamil">
+                    <label for="lang-tamil">Tamil</label>
+                </div>
+            </fieldset>
+
+            
+            <div class="input-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+            </div>
+
+            
+            <p id="message"></p>
+
+            
+            <div class="button-group">
+                <button type="submit">Register</button>
+                <button type="reset">Reset</button>
+            </div>
+
+            <p class="form-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function setupDOB() {
+            const daySelect = document.getElementById('dob-day');
+            const monthSelect = document.getElementById('dob-month');
+            const yearSelect = document.getElementById('dob-year');
+            if (!daySelect || !monthSelect || !yearSelect) return;
+
+            // Populate Days (1-31)
+            if (daySelect.options.length <= 1) {
+                for (let i = 1; i <= 31; i++) {
+                    daySelect.add(new Option(i, i));
+                }
+            }
+            // Populate Months
+            if (monthSelect.options.length <= 1) {
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                months.forEach((month, index) => {
+                    monthSelect.add(new Option(month, index + 1));
+                });
+            }
+            // Populate Years
+            if (yearSelect.options.length <= 1) {
+                const currentYear = new Date().getFullYear();
+                for (let i = currentYear; i >= currentYear - 100; i--) {
+                    yearSelect.add(new Option(i, i));
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', setupDOB);
+
+        // Handle the form submission
+        const regForm = document.getElementById('registration-form');
+        if (regForm) {
+            regForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const messageEl = document.getElementById('message');
+                if (!email || !password || !messageEl) return;
+
+                try {
+                    if (localStorage.getItem(email)) {
+                        messageEl.textContent = 'This email is already registered. Please login.';
+                        messageEl.className = 'error';
+                    } else {
+                        localStorage.setItem(email, password);
+                        messageEl.textContent = 'Registration successful! Redirecting to login...';
+                        messageEl.className = 'success';
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 2000);
+                    }
+                } catch (e) {
+                    messageEl.textContent = 'Error saving data. Your browser might be in private mode or storage is full.';
+                    messageEl.className = 'error';
+                    console.error(e);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
