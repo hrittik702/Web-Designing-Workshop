@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Book Catalogue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-sans p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">CSE Books</h1>
+        
+        <table class="w-full">
+            <tbody>
+                
+                <!-- Book Item 1 -->
+                <tr class="border-b border-gray-300">
+                    <td class="p-4 align-top">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">The C Programming</h2>
+                    </td>
+                    <td class="p-4 align-top w-28">
+                        <p class="text-xl font-bold text-gray-800">₹199.00</p>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <a href="https://drive.google.com/file/d/1pQm4SKNrm1nYKp9ijoqnmcjk1WVVq19C/preview" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700">
+                            Preview
+                        </a>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <button class="add-to-cart-btn inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Book Item 2 -->
+                <tr class="border-b border-gray-300">
+                    <td class="p-4 align-top">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Data Structures with C</h2>
+                    </td>
+                    <td class="p-4 align-top w-28">
+                        <p class="text-xl font-bold text-gray-800">₹249.00</p>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <a href="https://drive.google.com/file/d/1Q_hHGpEQzs3mwuNAx8oUajtIsJByCUQo/preview" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700">
+                            Preview
+                        </a>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <button class="add-to-cart-btn inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-300">
+                    <td class="p-4 align-top">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Engineering Mathematics - 4</h2>
+                    </td>
+                    <td class="p-4 align-top w-28">
+                        <p class="text-xl font-bold text-gray-800">₹499.00</p>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <a href="https://drive.google.com/file/d/17A1uS03MfPKzM5F7j9-bRCmZz8Z0MCjq/preview" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700">
+                            Preview
+                        </a>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <button class="add-to-cart-btn inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-300">
+                    <td class="p-4 align-top">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">HTML</h2>
+                    </td>
+                    <td class="p-4 align-top w-28">
+                        <p class="text-xl font-bold text-gray-800">₹99.99</p>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <a href="https://drive.google.com/file/d/1NWfzXc_Q6r47e7FOH-3AUJn8qGFjJw02/preview" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700">
+                            Preview
+                        </a>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <button class="add-to-cart-btn inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-300">
+                    <td class="p-4 align-top">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Computer Organization & Architecture</h2>
+                    </td>
+                    <td class="p-4 align-top w-28">
+                        <p class="text-xl font-bold text-gray-800">₹9999.00</p>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <a href="https://drive.google.com/file/d/1MB8LvvPiilG6de2wApD4jRT_hhK6ulBh/preview" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700">
+                            Preview
+                        </a>
+                    </td>
+                    <td class="p-4 align-top w-40">
+                        <button class="add-to-cart-btn inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+                
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const row = button.closest('tr');
+                const title = row.querySelector('h2').innerText;
+                const price = row.querySelector('.text-xl.font-bold').innerText;
+                
+                const book = {
+                    title,
+                    price,
+                    image: 'https://placehold.co/600x400/5e81ac/white?text=Book' // Placeholder image
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(book);
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert(title + ' has been added to your cart.');
+            });
+        });
+    </script>
+
+</body>
+</html>

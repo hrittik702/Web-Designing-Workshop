@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-sans p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Your Shopping Cart</h1>
+
+        <div id="cart-items" class="w-full">
+            <!-- Cart items will be injected here by JavaScript -->
+        </div>
+
+        <div class="mt-8 text-right">
+            <p class="text-2xl font-bold text-gray-800">Total: <span id="total-price">₹0.00</span></p>
+            <button class="mt-4 px-6 py-3 bg-green-600 text-white font-medium rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                let totalPrice = 0;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="text-gray-600">Your cart is empty.</p>';
+                    totalPriceElement.innerText = '₹0.00';
+                    return;
+                }
+
+                const table = document.createElement('table');
+                table.className = 'w-full';
+                table.innerHTML = `
+                    <thead>
+                        <tr class="border-b border-gray-300">
+                            <th class="p-4 text-left">Product</th>
+                            <th class="p-4 text-left"></th>
+                            <th class="p-4 text-left">Price</th>
+                            <th class="p-4 text-left"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                `;
+                const tbody = table.querySelector('tbody');
+
+                cart.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.className = 'border-b border-gray-300';
+                    row.innerHTML = `
+                        <td class="p-4 align-top w-28">
+                            <img src="${item.image}" alt="${item.title}" class="w-24 h-auto object-cover">
+                        </td>
+                        <td class="p-4 align-top">
+                            <h2 class="text-xl font-semibold text-gray-900">${item.title}</h2>
+                        </td>
+                        <td class="p-4 align-top w-28">
+                            <p class="text-xl font-bold text-gray-800">${item.price}</p>
+                        </td>
+                        <td class="p-4 align-top w-40">
+                            <button class="text-red-600 hover:text-red-800" data-index="${index}">Remove</button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                    totalPrice += parseFloat(item.price.replace('₹', ''));
+                });
+
+                cartItemsContainer.appendChild(table);
+                totalPriceElement.innerText = '₹' + totalPrice.toFixed(2);
+
+                // Add event listeners to remove buttons
+                const removeButtons = document.querySelectorAll('.text-red-600');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const indexToRemove = parseInt(event.target.getAttribute('data-index'));
+                        cart.splice(indexToRemove, 1);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCart();
+                    });
+                });
+            }
+
+            renderCart();
+        });
+    </script>
+
+</body>
+</html>
